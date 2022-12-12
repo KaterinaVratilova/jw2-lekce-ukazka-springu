@@ -15,8 +15,15 @@ repositories {
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-freemarker'
   implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'org.springframework.boot:spring-boot-starter-jetty'
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+modules {
+  module("org.springframework.boot:spring-boot-starter-tomcat") {
+    replacedBy("org.springframework.boot:spring-boot-starter-jetty", "Use Jetty instead of Tomcat")
+  }
+}
 }
 
 tasks.named('test') {
